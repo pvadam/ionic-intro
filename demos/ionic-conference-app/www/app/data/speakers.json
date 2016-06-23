@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Peter",
+    "profile_pic": "img/peter.jpeg",
+    "twitter": "http://twitter.com/pvadam",
+    "about": "Ionic@Budapest Meetup organizer. Ionic, Serverless backend and IoT enthusiast.",
+    "location": "Budapest, Hungary"
+  },
+  {
+    "id": "2",
+    "name": "Andras",
+    "profile_pic": "img/Andras.png",
+    "twitter": "http://twitter.com/ionicframework",
+    "about": "Pulilab co-worker.",
+    "location": "Budapest, Hungary"
+  },
+  {
+    "id": "3",
+    "name": "Paul",
+    "profile_pic": "img/Paul.jpeg",
+    "twitter": "http://twitter.com/ionicframework",
+    "about": "Ionic specialist, Ionic UK Meetup organizer",
+    "location": "UK"
+  }
+]
