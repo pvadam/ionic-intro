@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Ionic Intro</title>
+
+  <meta name="description" content="Building hybrid apps...
+   The Ionic and Angular teams have been working in parallel to extend Ionic’s performance in even more exciting ways than previous versions. We’ll review the new features of Ionic 2 and walk through the process of building a practical and highly performant app, using a single codebase for multiple platforms.">
+  <meta name="author" content="Peter ADAM">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/ionic.css" id="theme">
+  <link rel="stylesheet" href="lib/css/oceanicnext.css">
+  <link rel="icon" href="favicon.ico">
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <div class="slides">
+
+
+      <section>
+        <img src="img/ionic-sdk-landscape-white-1024.png" class="logo" width="450" style="display:block; margin:auto; margin-bottom:80px;">
+        <h1 style="font-size:56px">Intro to Ionic</h1>
+        <h1 style="font-size:56px"></h1>
+        <h3 style="font-size:36px">Ionic@Budapest Meetup</h3>
+        <h3 style="font-size:28px">2016 May</h3>
+      </section>
+
+
+      <section>
+        <h1 class="left dark-shadow">Peter ADAM</h1>
+        <h3 class="left dark-shadow">IoT developer at Hybile Labs, specialised in hybrid mobile apps with serverless backends</h3>
+        <ul class="me dark-shadow">
+          <li style="background:url(img/marker.png) no-repeat 0 8px;">Budapest, Hungary</li>
+          <li style="background:url(img/twitter.png) no-repeat 0 16px;">
+            <a href="https://twitter.com/pvadam" target="_blank" style="text-decoration:none">@pvadam</a>
+          </li>
+          <li style="background:url(img/github.png) no-repeat 0 17px;">
+            <a href="https://github.com/pvadam" target="_blank" style="text-decoration:none">
+              pvadam</a>
+          </li>
+          <li style="background:url(img/web.png) no-repeat 0 17px; background-size: 50px 50px;">
+            <a href="https://hybile.io" target="_blank" style="text-decoration:none">
+              hybile.io</a>
+          </li>
+        </ul>
+      </section>
+
+
+      <section>
+        <h2>Overview</h2>
+        <ol>
+          <li>Native vs Hybrid Apps</li>
+          <li>Intro Ionic</li>
+          <li>Ionic Platform</li>
+          <li>Ionic v2</li>
+          <li>Demos</li>
+        </ol>
+      </section>
+
+
+      <section>
+        <blockquote>
+          <b>&ldquo;I want to build an app!&rdquo;</b>
+        </blockquote>
+      </section>
+
+
+      <section>
+        <h3>More Platforms. More Problems.</h3>
+        <p style="margin-top: 60px">
+          <img src="img/apple.png" class="logo" width="200" height="200" style="margin-right: 10px">
+          <img src="img/android.png" class="logo" width="200" height="200" style="margin-left: 10px; margin-right: 10px">
+          <img src="img/windows.png" class="logo" width="200" height="200" style="margin-left: 10px; margin-right: 10px">
+          <img src="img/blackberry.png" class="logo" width="200" height="200" style="margin-left: 10px;">
+        </p>
+        <p>
+          <span class="light-text">
+            Why are we still coding for multiple platforms in 2016?
+          </span>
+        </p>
+      </section>
+
+
+      <section>
+        <h3 style="font-size: 80px">Hybrid Apps!</h3>
+        <p style="font-size: 32px"><strong>HTML5</strong> that acts like native</p>
+        <p style="font-size: 32px">Web wrapped in <strong>native layer</strong></p>
+        <p style="font-size: 32px">Direct access to <strong>native APIs</strong></p>
+        <p style="font-size: 32px">Familiar <strong>web dev</strong> environment</p>
+        <p style="font-size: 32px">A <strong>single code base</strong> (web platform!)</p>
+      </section>
+
+      <section data-background="img/oldphones.jpg">
+        <blockquote style="font-size: 80px; font-family:Georgia; text-shadow: 5px 0 15px rgba(0,0,0,.7)">
+          &ldquo;It's not 2007 anymore&rdquo;
+        </blockquote>
+      </section>
+
+
+      <section data-background="img/dylan.jpg">
+        <img src="img/times-changin.png" style="height: 100px; margin: 0 300px 40px 0;">
+        <table>
+          <tr>
+            <th>Year</th>
+            <th>Device</th>
+            <th>Processor</th>
+            <th>RAM</th>
+          </tr>
+          <tr>
+            <td>2007</td>
+            <td>iPhone</td>
+            <td>400 MHz</td>
+            <td>128 MB</td>
+          </tr>
+          <tr>
+            <td>2010</td>
+            <td>iPhone 4</td>
+            <td>1 GHz</td>
+            <td>512 MB</td>
+          </tr>
+          <tr>
+            <td>2015</td>
+            <td>iPhone 6s</td>
+            <td>1.84 GHz dual-core</td>
+            <td>2 GB</td>
+          </tr>
+        </table>
+      </section>
+
+
+      <section>
+        <h4 style="font-size:50px; margin:0;">Web-standards</h4>
+        <h4 style="font-size:80px;">Have improved!</h4>
+        <p style="font"><a href="http://caniuse.com/">caniuse.com</a> is lookin' pretty good nowadays</p>
+        <p>Android is now <strong>Chromium-based</strong></p>
+        <p>iOS users keep their devices <strong>up-to-date</strong></p>
+
+        <p style="text-align:center;">
+          <img src="img/caniuse-querySelector.png" width=460 class="logo">
+          <img src="img/caniuse-flexbox.png" width=460 class="logo">
+        </p>
+      </section>
+
+
+      <section data-background="white">
+        <img src="img/ios9-adoption.png">
+        <p style="font-size:10px">https://mixpanel.com/trends/#report/ios_9</p>
+      </section>
+
+
+      <section data-background="white">
+        <img src="img/android-adoption.png">
+        <p style="font-size:10px">https://mixpanel.com/trends/#report/android_os_adoption</p>
+      </section>
+
+
+      <section>
+        <h3 style="margin:0">Native SDKs...</h3>
+        <h2 style="font-size:2.2em;">Are Great!</h2>
+        <p style="margin:30px auto 20px auto; width: 600px">
+          Common UI, APIs, views, navigation, stack history, transitions, interactions, gestures, etc.
+        </p>
+        <img src="img/native-sdk.png" style="width:66%">
+      </section>
+
+
+      <section data-background="img/websdk.png" style="width:100%">
+      </section>
+
+
+      <section data-background="white">
+        <img src="img/ionic-logo.svg" style="width:750px;">
+      </section>
+
+
+      <section>
+        <h3 style="margin:0; font-size:32px">Web Technologies You Already</h3>
+        <h2 style="font-size: 85px;">Know &amp; Love</h2>
+        <div style="margin-top: 30px">
+          <img src="img/html.png" class="logo" width="185" height="260">
+          <img src="img/css.png" class="logo" width="185" height="260" style="margin-left: 80px; margin-right: 80px;">
+          <img src="img/js.png" class="logo" width="185" height="260">
+        </div>
+        <p style="margin-top: 30px; opacity: 0.6">
+          (You'll feel right at home)
+        </p>
+      </section>
+
+
+      <section data-background="img/angular-bg.png">
+        <h3 style="font-size:42px; margin:0">Superpowered by</h3>
+        <h2 style="font-size:90px;">Angular</h2>
+        <p style="margin-top:60px;"><strong>Extends the HTML</strong> vocabulary</p>
+        <p>Proven for <strong>large-scale</strong> app development</p>
+        <p>UI Components using <strong>Directives &amp; Services</strong></p>
+        </ul>
+      </section>
+
+
+      <section data-background="img/sass.png">
+        <h2 style="font-size:3em; text-transform: none;">Sass!</h2>
+        <p>CSS generated from the <strong>Sass preprocessor</strong></p>
+        <p>Quickly give your app its own <strong>look and feel</strong></p>
+        <p>CSS designed to be <strong>easily overridden</strong></p>
+        <p><strong>Variables based</strong> with default settings</p>
+      </section>
+
+
+      <section data-background="img/phones-stacked.png">
+        <h2 style="color:black; margin-bottom: 50px">How it all comes together</h2>
+        <ul class="stack">
+          <li style="background: #20ab93">Your App</li>
+          <li style="background: #4c8df5">Ionic</li>
+          <li style="background: #d94442">Angular</li>
+          <li style="background: #3b4854">WebView (Cordova)</li>
+          <li style="background: #d4deee; color: #3b4854;">Native App</li>
+        </ul>
+      </section>
+
+
+      <section>
+        <div style="
+          background: url(img/ionic-logo.png) no-repeat center center;
+          background-size: 390px 390px;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 0.1; z-index: -1;"></div>
+        <h3 style="font-size:80px;">Ionic!</h3>
+        <p>Mobile apps with web tech</p>
+        <p>Focused on mobile first</p>
+        <p>Easily customized</p>
+        <p>Angular for code structure *</p>
+      </section>
+
+
+      <section data-background="img/ionic-stats.png">
+        <h3>Stats!!</h3>
+        <p>Top 40 OSS project (~24,000 stars on GitHub)</p>
+        <p>Over 2.3 MILLION apps built with Ionic</p>
+        <p>Ionic apps have topped app store charts</p>
+        <p>Fortune 50 co’s to YC/TechStars companies</p>
+        <p>Amazing community</p>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h4>Ionic v1 is great</h4>
+            <p>Hybrid SDK that didn't exist</p>
+            <p>Validated the hybrid approach</p>
+            <p>Garnered massive adoption</p>
+            <p>Built during iOS 6</p>
+            <p>Android 2.3 - 4.3</p>
+          </div>
+          <div col center>
+            <img src="img/v1-is-great.png" style="height: 290px">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>A lot's changed</h3>
+            <p>Better/faster devices!</p>
+            <p>Fewer slow/bad devices!</p>
+            <p>Widely available web APIs!</p>
+            <p>Improved browser engines!</p>
+          </div>
+          <div col center>
+            <img src="img/alot-has-changed.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Ionic 2</h3>
+            <p>Same powerful framework</p>
+            <p>With lessons learned from v1</p>
+            <p>Amazing performance from Angular2</p>
+            <p>Tons of new features</p>
+          </div>
+          <div col center>
+            <img src="img/ionic2.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>v2 Goals</h3>
+            <p>Simplicity</p>
+            <p>Platform Continuity</p>
+            <p>Performance</p>
+            <p>Creative Freedom</p>
+            <p>Code once</p>
+          </div>
+          <div col center>
+            <img src="img/goals.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Simplicity</h3>
+            <p>Component Model</p>
+            <p>Elements and attributes</p>
+            <p>Ready for customization</p>
+            <p>Clean JavaScript</p>
+          </div>
+          <pre col>
+            <code class="html">&lt;button&gt;...&lt;/button&gt;
+
+&lt;button danger&gt;...&lt;/button&gt;
+
+&lt;ion-checkbox&gt;...&lt;/ion-checkbox&gt;
+
+&lt;ion-list&gt;
+  &lt;ion-item&gt;...&lt;/ion-item&gt;
+  &lt;ion-item&gt;...&lt;/ion-item&gt;
+&lt;/ion-list&gt;</code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <pre col>
+            <code class="html">&lt;ion-navbar&gt;
+  &lt;ion-title&gt;Profile&lt;/ion-title&gt;
+&lt;/ion-navbar&gt;
+
+
+&lt;ion-content&gt;
+  {{first}} {{last}}
+&lt;/ion-content&gt;</code>
+          </pre>
+          <pre col>
+            <code class="javascript">@Page({
+  templateUrl: 'profile.html'
+})
+export class Profile {
+  constructor() {
+    this.first = 'Biff';
+    this.last = 'Tannen';
+  }
+}</code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <pre col>
+            <code class="html">&lt;ion-nav [root]="home"&gt;&lt;/ion-nav&gt;</code>
+          </pre>
+          <pre col>
+            <code class="javascript">@App({
+  templateUrl: 'app.html'
+})
+class MyApp {
+  constructor() {
+    this.home = HomePage;
+  }
+}</code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Platform Continuity</h3>
+            <p>iOS : Android</p>
+            <p>One code base</p>
+            <p>Same HTML and JS</p>
+            <p>More than just different CSS</p>
+          </div>
+          <div col center>
+            <img src="img/platformcont.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col demo>
+            <div class="demo-ios" id="mode-ios">
+              <iframe src="demos/ionic-conference-app/www/index.html?ionicplatform=ios"></iframe>
+            </div>
+          </div>
+          <div col>
+            <div class="demo-md" id="mode-md">
+              <iframe src="demos/ionic-conference-app/www/index.html?ionicplatform=android"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Icons</h3>
+            <p>~900 Ionicons</p>
+            <p>Now SVGs</p>
+            <p>iOS versions</p>
+            <p>MD versions</p>
+          </div>
+          <pre col>
+            <code class="html">&lt;icon home&gt;&lt;/icon&gt;
+
+&lt;icon mail&gt;&lt;/icon&gt;
+
+&lt;icon share&gt;&lt;/icon&gt;
+
+&lt;icon map&gt;&lt;/icon&gt;</code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section class="icon-demo">
+        <div class="icon-buttons">
+          <button id="icons-ios" class="active">iOS</button>
+          <button id="icons-android">Android</button>
+        </div>
+        <div class="icons-preview">
+
+          <div flex>
+            <div col><i class="ion ion-ios-home"></i></div>
+            <div col><i class="ion ion-ios-musical-notes"></i></div>
+            <div col><i class="ion ion-ios-share"></i></div>
+            <div col><i class="ion ion-ios-book"></i></div>
+            <div col><i class="ion ion-ios-unlock"></i></div>
+            <div col><i class="ion ion-ios-bug"></i></div>
+          </div>
+
+          <div flex>
+            <div col><i class="ion ion-ios-bulb"></i></div>
+            <div col><i class="ion ion-ios-calendar"></i></div>
+            <div col><i class="ion ion-ios-camera"></i></div>
+            <div col><i class="ion ion-ios-cart"></i></div>
+            <div col><i class="ion ion-ios-chatbubbles"></i></div>
+            <div col><i class="ion ion-ios-cloud"></i></div>
+          </div>
+
+          <div flex>
+            <div col><i class="ion ion-ios-compass"></i></div>
+            <div col><i class="ion ion-ios-contact"></i></div>
+            <div col><i class="ion ion-ios-create"></i></div>
+            <div col><i class="ion ion-ios-trash"></i></div>
+            <div col><i class="ion ion-ios-flower"></i></div>
+            <div col><i class="ion ion-ios-globe"></i></div>
+          </div>
+
+          <div flex>
+            <div col><i class="ion ion-ios-alarm"></i></div>
+            <div col><i class="ion ion-ios-image"></i></div>
+            <div col><i class="ion ion-ios-locate"></i></div>
+            <div col><i class="ion ion-ios-mail"></i></div>
+            <div col><i class="ion ion-ios-mic"></i></div>
+            <div col><i class="ion ion-ios-settings"></i></div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>V1 Navigation</h3>
+            <p>Navigation tightly-coupled to address bar</p>
+            <p>UI-Router: challenge to have full control</p>
+            <p>Developers <strong>NEED</strong> complete control</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Push/Pop Navigation</h3>
+            <p>Rethought navigation for v2</p>
+            <p>Similar to iOS/Android</p>
+            <p>Full control of nav experience</p>
+            <p>URL and deep-linking support</p>
+          </div>
+          <div col demo>
+            <div class="demo-ios">
+              <iframe src="demos/ionic-conference-app/www/index.html?ionicplatform=ios"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Full Control</h3>
+            <p>Push on to the nav stack</p>
+            <p>Pop from the nav stack</p>
+            <p>Insert/Remove/Update</p>
+            <p>URL reflects app's state</p>
+            <p>
+          </div>
+          <pre col>
+            <code class="javascript">pushSettings() {
+  this.nav.push(Settings);
+}
+
+goBack() {
+  this.nav.pop();
+}
+
+resetHome() {
+  this.nav.setRoot(Home);
+}</code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Theming and Customization</h3>
+            <p>Apps must fit their brand first</p>
+            <p>Numerous Ionic themes</p>
+            <p>Build tools already included</p>
+            <p>Sass is enabled by default</p>
+          </div>
+          <div col center>
+            <img src="img/theming.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Colors and Variables</h3>
+            <p>Quickly create entire theme</p>
+            <p>Design for your brand</p>
+            <p>Add, Remove, Rename</p>
+            <p>~Everything is a variable</p>
+          </div>
+          <pre col><code class="stylus">
+$colors: (
+  primary:    #387ef5,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222222,
+)
+</code></pre>
+        </div>
+        <div style="text-align: right">
+          <img src="img/colors.png" width="490px">
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>v1 Animations</h3>
+            <p>Mix of CSS and JS</p>
+            <p>CSS animations limited</p>
+            <p>Difficult to interact with</p>
+          </div>
+          <pre col><code class="stylus">
+.entering-view {
+  transform: translate3d(...);
+  transition-property: transform;
+  transition-duration: 300ms;
+}
+
+.entering-view.active {
+  transform: translate3d(...);
+}</code></pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Web Animations API</h3>
+            <p>Browser's animation engine</p>
+            <p>Flexibility of JavaScript</p>
+            <p><a href="https://w3c.github.io/web-animations/">W3C Spec: Editors Draft</a></p>
+            <p>Native on Chrome/Android</p>
+            <p>Great iOS polyfill</p>
+          </div>
+          <div col center>
+            <img src="img/w3c.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>v2 Animations</h3>
+            <p>Extend and add animations</p>
+            <p>Interactive control</p>
+            <p>Thin wrapper to WAPI</p>
+          </div>
+          <div col demo>
+            <div class="demo-ios">
+              <iframe src="demos/ionic-conference-app/www/index.html?ionicplatform=ios"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Highly Configurable</h3>
+            <p>~ Everything has a config</p>
+            <p>Global config</p>
+            <p>Platform config</p>
+            <p>Attribute config</p>
+            <p>Component instance config</p>
+          </div>
+          <div col center>
+            <img src="img/configurable.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>JavaScript</h3>
+            <p>v1 was built with ES5</p>
+            <p>v2 built with the latest standards</p>
+            <p>ES6 brings many new features</p>
+          </div>
+          <div col center>
+            <img src="img/js.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>TypeScript</h3>
+            <p>ES6 + Decorators + Types</p>
+            <p>Ionic 2 / NG2 built using TS</p>
+            <p>Editor Code completion</p>
+            <p>[optional]</p>
+          </div>
+          <div col center>
+            <img src="img/typescript.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Native Power</h3>
+            <p>Batteries included</p>
+            <p>Brought straight into Ionic</p>
+            <p>Easier to get native access</p>
+            <p>GPS, Bluetooth, Camera, etc.</p>
+          </div>
+          <div col center>
+            <img src="img/plugins.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <pre col>
+            <code class="javascript">import {Camera, Vibration} from 'ionic-native';
+
+Camera.getPicture(options).then((imageData) => {
+ // imageData is either a base64 encoded string or a file URI
+ // If it's base64:
+ let base64Image = "data:image/jpeg;base64," + imageData;
+}, (err) => {
+});
+
+
+// Vibrate the device for a second
+Vibration.vibrate(1000);
+</code>
+          </pre>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Ionic.io</h3>
+            <p>Ionic Platform</p>
+            <p>Ionic Creator</p>
+            <p>Ionic Lab</p>
+            <p>Ionic View</p>
+          </div>
+          <div col center>
+            <img class="laptop" src="img/home-laptop.png">
+          </div>
+        </div>
+        <aside class="notes">
+        </aside>
+      </section>
+
+
+      <section data-background="white">
+        <div flex>
+          <div col>
+            <h3 center>Ionic Platform</h3>
+            <p>
+              <img src="img/overview-top-layer.png">
+            </p>
+          </div>
+        </div>
+        <aside class="notes">
+        </aside>
+      </section>
+
+
+      <section data-background-image="img/bg-hero-creator.jpg">
+        <div flex>
+          <div col>
+            <p center style="margin-top: -240px">
+              <img src="img/creator-logo.png">
+            </p>
+          </div>
+        </div>
+        <aside class="notes">
+        </aside>
+      </section>
+
+
+      <section data-background="white">
+        <div flex>
+          <div col>
+            <p center>
+              <img src="img/lab-logo.png">
+            </p>
+            <p center>
+              <img src="img/lab-preview.png">
+            </p>
+          </div>
+        </div>
+        <aside class="notes">
+        </aside>
+      </section>
+
+
+      <section data-background="white">
+        <div flex>
+          <div col>
+            <p center>
+              <img src="img/ionicview-logo.png">
+            </p>
+            <p center>
+              <img src="img/ionic-view.png">
+            </p>
+          </div>
+        </div>
+        <aside class="notes">
+        </aside>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Ionic CLI</h3>
+            <p>ES6/Typescript transpilation</p>
+            <p>Sass compiling</p>
+            <p>Cordova builds</p>
+            <p>Browserify / Webpack bundling</p>
+            <p>Scaffolding/Architecture</p>
+            <p>Recommended best practices</p>
+            <p>Crosswalk</p>
+          </div>
+          <div col center>
+            <img src="img/cli.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Huge Community!</h3>
+            <p>2M+ forum page views/mo.</p>
+            <p>105 Meetups worldwide</p>
+            <p>3,000+ active Slack members</p>
+            <p>4,000+ Ionic apps created every day</p>
+            <p>Ionic Market</p>
+          </div>
+          <div col center>
+            <img src="img/community.png">
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Tips</h3>
+            <p>DI</p>
+            <p>Async / promises</p>
+            <p>Angular 2 - Appcamp.io</p>
+            <p>Udacity - Browser Rendering Optimization course</p>
+            <p>Testing</p>
+            <p>Ionic Play</p>
+          </div>
+          <div col center>
+            <img src="img/idea.png">
+          </div>
+        </div>
+        <aside class="notes">
+          <p>Udacity course - https://www.udacity.com/course/browser-rendering-optimization--ud860</p>
+          <ul>
+            <li>Google performance guru <b>Paul Lewis</b></li>
+            <li>Cameron Pittman</li>
+          </ul>
+        </aside>
+      </section>
+
+
+      <section>
+        <div flex>
+          <div col>
+            <h3>Want to try it out now?</h3>
+            <p>We want your feedback</p>
+            <p><code><a href="http://ionic.io/2" style="font-size:48px; text-decoration:underline;margin-top:36px;color:#4e8ef7;">ionic.io/2</a></code></p>
+          </div>
+          <div col center>
+            <img src="img/tryit.png">
+          </div>
+        </div>
+        <aside class="notes">
+        </aside>
+      </section>
+
+
+      <section>
+        <h3>What's Next!</h3>
+        <p>Beta released in February 2016</p>
+        <p>Web Worker Support</p>
+        <p>Staying 'Nsync with Angular2</p>
+        <p>Add even more to ionic.io services</p>
+        <aside class="notes">
+        </aside>
+      </section>
+
+
+      <section>
+        <h3><code style="font-size: 80px">&lt;/html&gt;</code></h3>
+        <p><a href="https://twitter.com/pvadam" target="_blank">@pvadam</a></p>
+      </section>
+
+
+    </div>
+
+  </div>
+
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+  <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      maxScale: 1,
+      minScale: 1,
+
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      notes: true,
+
+      transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+          {
+        src: 'plugin/highlight/highlight.js',
+        async: true,
+        condition: function() {
+          return !!document.querySelector('pre code');
+        },
+        callback: function() {
+          hljs.initHighlightingOnLoad();
+        }
+      }]
+    });
+
+    (function() {
+      var iosIcons = document.getElementById('icons-ios');
+      var androidIcons = document.getElementById('icons-android');
+      var icons = document.querySelectorAll('.icons-preview .ion');
+
+      iosIcons.addEventListener('click', function(ev) {
+        iosIcons.classList.add('active');
+        androidIcons.classList.remove('active');
+        setMode('ios');
+      });
+
+      androidIcons.addEventListener('click', function(ev) {
+        iosIcons.classList.remove('active');
+        androidIcons.classList.add('active');
+        setMode('md');
+      });
+
+      function setMode(mode) {
+        for (var i = 0; i < icons.length; i++) {
+          if (mode == 'ios') {
+            icons[i].className = icons[i].className.replace('-md-', '-ios-') + '-outline';
+          } else {
+            icons[i].className = icons[i].className.replace('-ios-', '-md-').replace('-outline', '');
+          }
+        }
+      }
+
+      setMode('ios');
+    })();
+  </script>
+
+</body>
+
+</html>
