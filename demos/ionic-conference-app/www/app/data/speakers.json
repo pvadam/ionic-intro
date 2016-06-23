@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Peter",
-    "profile_pic": "img/peter.jpeg",
+    "profile_pic": "img/Peter.jpeg",
     "twitter": "http://twitter.com/pvadam",
     "about": "Ionic@Budapest Meetup organizer. Ionic, Serverless backend and IoT enthusiast.",
     "location": "Budapest, Hungary"
